@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Quizzed</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=EB+Garamond:wght@400&family=Courier+Prime&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #12234a;
+    --cream: #f7f4ef;
+    --grey: #6b7280;
+    --light-grey: #9ca3af;
+    --rule: #d1d5db;
+  }
+
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 2rem;
+    opacity: 0;
+    animation: fadeIn 1.4s ease forwards;
+    animation-delay: 0.3s;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+  }
+
+  .rule {
+    width: 160px;
+    height: 1px;
+    background: var(--rule);
+    margin: 1.6rem auto;
+  }
+
+  .with {
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 0.72rem;
+    color: var(--light-grey);
+    letter-spacing: 0.18em;
+  }
+
+  .name {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 1.3rem;
+    color: var(--grey);
+    letter-spacing: 0.06em;
+    margin-top: 0.4rem;
+  }
+
+  .tagline {
+    margin-top: 3rem;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: var(--grey);
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1.2s;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    color: var(--rule);
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 2.4s;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="title">The Quizzed</div>
+  <div class="rule"></div>
+  <div class="with">with</div>
+  <div class="name">Edwin Vicar-Jones</div>
+  <div class="tagline" id="tagline"></div>
+</div>
+
+<div class="footer">Five questions. One chance each.</div>
+
+<elevenlabs-convai agent-id="agent_0101kq0k7bzbe8dvg0t1j9r22sk5"></elevenlabs-convai>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+<script>
+  const lines = [
+    "You're late. The audacity.",
+    "You're late. Or early. I'm not sure which is sadder."
+  ];
+  document.getElementById('tagline').textContent = lines[Math.floor(Math.random() * lines.length)];
+</script>
+
+</body>
+</html>
